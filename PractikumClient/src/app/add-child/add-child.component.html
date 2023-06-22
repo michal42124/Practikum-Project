@@ -1,0 +1,45 @@
+<!-- <div class="child" *ngIf="toAddChild"> -->
+  <form (ngSubmit)="saveChild(myForm)" #myForm="ngForm" class="example-form">
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>שם פרטי</mat-label>
+        <input matInput type="text" [(ngModel)]="child.FirstName" name="childNameInp" #childName="ngModel" placeholder="שם "
+          required>
+        <div class="error" *ngIf="childName.touched&&childName.errors&&childName.errors.required">שם פרטי הוא שדה חובה
+        </div>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>שם משפחה</mat-label>
+        <input matInput type="text" [(ngModel)]="child.LastName" name="childNameInp" #childName="ngModel" placeholder="שם "
+          required>
+        <div class="error" *ngIf="childName.touched&&childName.errors&&childName.errors.required">שם פרטי הוא שדה חובה
+        </div>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>תעודת זהות</mat-label>
+        <input matInput type="text" [(ngModel)]="child.Tz" name="childIdInp" #childId="ngModel" placeholder="תעודת זהות"
+          required minlength="9" maxlength="9" />
+        <div class="error" *ngIf="childId.touched&&childId.errors&&childId.errors.required"> תעודת זהות היא שדה חובה
+        </div>
+        <div class="error" *ngIf="childId.touched&&childId.errors&&childId.errors.minlength">תעודת זהות צריכה לכלול 9
+          ספרות בדיוק</div>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>תאריך לידה</mat-label>
+        <input matInput type="date" [(ngModel)]="child.DateOfBirth" name="childBornDateInp" #childDateOfBirth="ngModel"
+          placeholder="תאריך לידה" required />
+        <div class="error" *ngIf="childDateOfBirth.touched&&childDateOfBirth.errors&&childDateOfBirth.errors.required">
+          תאריך לידה הוא שדה חובה</div>
+      </mat-form-field>
+    </p>
+    <button *ngIf="!myForm.valid"  type="submit" class="boU-not"    mat-button color="primary" [disabled]="!myForm.valid"> שמור ילד  </button>
+  <button *ngIf="myForm.valid" type="submit" class="boU"    mat-button color="primary" [disabled]="!myForm.valid">  שמור ילד  </button>
+   <!-- <button type="submit" [disabled]="!myForm.valid">שמור ילד</button>  -->
+   </form> 
+<!-- </div>  -->

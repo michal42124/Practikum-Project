@@ -1,0 +1,67 @@
+<form (ngSubmit)="saveUser(myForm)" #myForm="ngForm" class="example-form">
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>שם פרטי</mat-label>
+      <input matInput type="text" [(ngModel)]="user.FirstName" name="firstNameInp" #myFirstName="ngModel"
+        placeholder="שם פרטי" required>
+      <div class="error" *ngIf="myFirstName.touched&&myFirstName.errors&&myFirstName.errors.required">שם פרטי הוא שדה
+        חובה
+      </div>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>שם משפחה</mat-label>
+      <input matInput type="text" [(ngModel)]="user.LastName" name="lastNameInp" #myLastName="ngModel"
+        placeholder="שם משפחה" required>
+      <div class="error" *ngIf="myLastName.touched&&myLastName.errors&&myLastName.errors.required">שם משפחה הוא שדה חובה
+      </div>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>תעודת זהות</mat-label>
+      <input matInput type="text" [(ngModel)]="user.Tz" name="idInp" #myId="ngModel" placeholder="תעודת זהות" required
+        minlength="9" maxlength="9" />
+      <div class="error" *ngIf="myId.touched&&myId.errors&&myId.errors.required"> תעודת זהות היא שדה חובה</div>
+      <div class="error" *ngIf="myId.touched&&myId.errors&&myId.errors.minlength">תעודת זהות צריכה לכלול 9 ספרות בדיוק
+      </div>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>תאריך לידה</mat-label>
+      <input matInput type="date" [(ngModel)]="user.DateOfBirth" name="bornDateInp" #myDateOfBirth="ngModel"
+        placeholder="תאריך לידה" required />
+      <div class="error" *ngIf="myDateOfBirth.touched&&myDateOfBirth.errors&&myDateOfBirth.errors.required"> תאריך לידה
+        הוא שדה חובה</div>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label> בחר מין</mat-label>
+      <mat-select [(ngModel)]="user.Gender" name="genderInp" #myGender="ngModel" placeholder="בחר מין" required>
+        <mat-option value="1">זכר</mat-option>
+        <mat-option value="2">נקבה</mat-option>
+      </mat-select>
+      <div class="error" *ngIf="myGender.touched&&myGender.errors&&myGender.errors.required">בחירת מין זהו שדה חובה
+      </div>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>בחר קופת חולים </mat-label>
+      <mat-select [(ngModel)]="user.HMO" name="HMOInp" #myHMO="ngModel" placeholder=" קופת חולים" required>
+        <mat-option value="1">מכבי</mat-option>
+        <mat-option value="2">מאוחדת</mat-option>
+        <mat-option value="2">לאומית</mat-option>
+        <mat-option value="2">כללית</mat-option>
+      </mat-select>
+      <div class="error" *ngIf="myHMO.touched&&myHMO.errors&&myHMO.errors.required"> קופת חולים הוא שדה חובה</div>
+    </mat-form-field>
+  </p>
+  <!-- <button *ngIf="!myForm.valid" type="submit" class="boU-not" mat-button color="primary" [disabled]="!myForm.valid">שמור </button> -->
+  <button type="submit" class="boU" mat-button color="primary" [disabled]="!myForm.valid"> שמור</button>
+  <button type="button" class="boU" mat-button color="primary" *ngIf="isSave" (click)="addChild()"> הוסף ילד</button>
+  <button type="button" class="boU-not" mat-button color="primary" *ngIf="!isSave"> הוסף ילד</button>
+</form>
